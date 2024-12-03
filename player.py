@@ -25,8 +25,8 @@ class Player(pygame.sprite.Sprite):
         if self.direction.x == 0 and self.direction.y == 0:
             self.status = f"{self.status.split('_')[0]}_idle"
 
-            if self.attacking:
-                self.status = f"{self.status.split('_')[0]}_attack"
+        if self.attacking:
+            self.status = f"{self.status.split('_')[0]}_attack"
 
 
 
@@ -39,9 +39,10 @@ class Player(pygame.sprite.Sprite):
                     self.animations[name] = []
             else:
                 for file_name in sorted(folder[2], key = lambda string: int(string.split('.')[0])):
-                    path = f"{folder[0].replace('\\','/')}/{file_name}"
+                    folder_path = folder[0].replace('\\','/')
+                    path = f"{folder_path}/{file_name}"
                     surf = pygame.image.load(path).convert_alpha()
-                    key = folder[0].split('/')[-1]
+                    key = folder_path.split('/')[-1]
                     self.animations[key].append(surf)
 
     def animation(self, dt):
