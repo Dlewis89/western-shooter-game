@@ -13,7 +13,7 @@ class Game:
         self.setup()
 
     def setup(self):
-        Player((200, 200), self.all_sprites, None, None)
+        Player((200, 200), self.all_sprites, PATHS['player'], None)
 
     def run(self):
         while True:
